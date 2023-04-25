@@ -1,0 +1,22 @@
+<h2>Customers</h2>
+
+<table class="table table-sm">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th></th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+        <td>{{ customer.customer_id }}</td>
+        <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+        <td>{{ customer.email }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.address }}</td>
+    </tr>
+    {% endfor %}
+
+
