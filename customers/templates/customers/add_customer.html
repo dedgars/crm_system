@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<h2>Add Customer</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {{ form.non_field_errors }}
+
+
+<input type="submit" value="Add Customer" class="btn btn-primary" /> 
+</form>
+{% endblock %}

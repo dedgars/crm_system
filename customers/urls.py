@@ -9,4 +9,7 @@ app_name = 'customers'
 
 urlpatterns = [
     path('', views.CustomerView.as_view(), name='customers'),
+    path('customers', views.CustomerView.as_view(), name='customers'),
+    path('add/', views.AddCustomerView.as_view(), name='add_customer'),
 ]
+
