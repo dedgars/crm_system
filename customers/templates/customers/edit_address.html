@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Address</h2>
+<hr />
+<form method="POST">
+
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+
+<input type="submit" value="Update Address" class="btn btn-primary" /> 
+</form>
+{% endblock %}

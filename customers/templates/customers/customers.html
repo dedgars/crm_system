@@ -14,6 +14,7 @@
         <th>Phone</th>
         <th>Address</th>
         <th></th>
+   
     </tr>
     {% for customer in customers %}
     <tr>
@@ -22,7 +23,8 @@
         <td>{{ customer.email }}</td>
         <td>{{ customer.phone }}</td>
         <td>{{ customer.address }}</td>
-    </tr>
+        <td><a href="{% url 'customers:customer_detail'  customer.customer_id %}">View</a></td>
+        </tr>
     {% endfor %}
 
 

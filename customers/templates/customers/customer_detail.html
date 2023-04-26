@@ -1,0 +1,30 @@
+
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<p>{{ customer.customer_id }}</p>
+<p>{{ customer.first_name }}</p>
+<p>{{ customer.last_name }}</p>
+<p>{{ customer.email }}</p>
+<p>{{ customer.address }}</p>
+<p>{{ customer.city }}</p>
+<p>{{ customer.state }}</p>
+<p>{{ customer.postal_code }}</p>
+<p>{{ customer.country }}</p>
+<p>{{ customer.phone }}</p>
+<p>{{ customer.active }}</p>
+<p>{{ customer.date_created }}</p>
+<p>{{ customer.date_modified }}</p>
+
+<hr/>
+
+<p><a href="">Add Equipment</a></p>
+<p><a href="{% url 'customers:edit_customer' customer.customer_id %}">Edit Customer Details</a></p>
+<p><a href="{% url 'customers:edit_address' customer.address_id %}">Edit Address</a></p>
+<p><a href="{% url 'customers:delete_customer' customer.customer_id %}">Delete</a></p>
+
+
+
+{% endblock %}
