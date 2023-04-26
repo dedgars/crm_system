@@ -16,10 +16,7 @@ urlpatterns = [
     path('edit_address/<int:pk>/', login_required(views.EditAddressView.as_view()), name='edit_address'),
     path('delete/<int:pk>/', login_required(views.DeleteCustomerView.as_view()), name='delete_customer'),
     path('view/<int:pk>/', login_required(views.CustomerDetailView.as_view()), name='customer_detail'),
-    # path('search', login_required(views.SearchView.as_view()), name='search'),
-    
     path('search_customers', views.search_customers, name='search_customers'),
-    
     path('search_results', views.search, name='search_results'),
 
 ]

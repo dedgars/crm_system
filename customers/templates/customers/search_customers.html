@@ -2,25 +2,29 @@
 {% block content %}
 
 <div class="container">
-<h2>Customers</h2>
-<div class="d-flex justify-content-between">
+    <br>
 
-
-    <section>
-        {% include 'customers/search.html' %}
-    </section>
-    </div>
-    
-    {% if request.method == 'POST' %}
-    
-    <input type="text"
-        hx-swap-oob="true"
-        id="customer-input"
-        name="customer" 
-        class="form-control-sm mr-2" 
-        placeholder="Enter customer details" />
-    
-    {% endif %}
-
+        <section>
+           
+                <form>
+                    {% csrf_token %}
+                    <input 
+                    type="search" 
+                    
+                    hx-post="{% url 'customers:search_results' %}" 
+                    hx-target='#results'
+                    hx-trigger="keyup changed delay:500ms, search" 
+                    
+                    name="search" 
+                    class="form-control-sm mr-2"
+                    placeholder="Search customers..." />
+                </form>
+            
+            </section>
+            <div id="results">
+            
+            </div>
+ 
 </div>
+
 {% endblock %}

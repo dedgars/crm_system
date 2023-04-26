@@ -4,7 +4,7 @@
 
 {% if results %}
     {% csrf_token %}
-    <ul class="list-group col-xs-12">
+    <ul>
     {% for customer in results %}
         <li>
             {{ customer }}
