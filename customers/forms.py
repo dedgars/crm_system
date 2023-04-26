@@ -11,6 +11,7 @@ class AddressForm(forms.ModelForm):
 
 
 class CustomerForm(forms.ModelForm):
+
     class Meta:
         model = Customer
         fields = ['customer_type', 
@@ -23,10 +24,16 @@ class CustomerForm(forms.ModelForm):
                   'phone']
 
 class CustomerMultiForm(MultiModelForm):
+    
     form_classes = {
         'address': AddressForm,
         'customer': CustomerForm,
     }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for visible in self.visible_fields():
+            visible.field.widget.attrs['class'] = 'form-control'
+            # visible.field.widget.attrs['placeholder'] = visible.field.label
         
 
 
