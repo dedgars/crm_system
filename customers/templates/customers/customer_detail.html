@@ -4,19 +4,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>{{ customer.customer_id }}</p>
-<p>{{ customer.first_name }}</p>
-<p>{{ customer.last_name }}</p>
-<p>{{ customer.email }}</p>
-<p>{{ customer.address }}</p>
-<p>{{ customer.city }}</p>
-<p>{{ customer.state }}</p>
-<p>{{ customer.postal_code }}</p>
-<p>{{ customer.country }}</p>
-<p>{{ customer.phone }}</p>
-<p>{{ customer.active }}</p>
-<p>{{ customer.date_created }}</p>
-<p>{{ customer.date_modified }}</p>
+<h3>
+{% if customer.customer_type == "Organization" %}
+    {{ customer.organization_name }}
+{% elif customer.first_name|length == 0 and  customer.last_name|length == 0 %}
+    {{ customer.address }}
+{% else %}
+    {{ customer.first_name }} {{ customer.last_name }}
+{% endif %}
+</h3>
+<ul class="list-unstyled">
+{% if customer.organization_registration_number|length > 0 %}
+<li>{{ customer.organization_registration_number }}</li>
+{% endif %}
+<li>{{ customer.email }}</li>
+<li>{{ customer.address }}</li>
+
+<li>{{ customer.phone }}</li>
+</ul>
+<hr />
+<ul class="list-unstyled">
+    <li><small>Created: {{ customer.date_created }}</small></li>
+    <li><small>Modified: {{ customer.date_modified }}</small></li>
+</ul>
+
+
 
 <hr/>
 

@@ -19,7 +19,15 @@
     {% for customer in customers %}
     <tr>
         <td>{{ customer.customer_id }}</td>
-        <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+        <td>
+            {% if customer.customer_type == "Organization" %}
+                {{ customer.organization_name }}
+            {% elif customer.first_name|length == 0 and  customer.last_name|length == 0 %}
+                {{ customer.address }}
+            {% else %}
+                {{ customer.first_name }} {{ customer.last_name }}
+            {% endif %}
+        </td>
         <td>{{ customer.email }}</td>
         <td>{{ customer.phone }}</td>
         <td>{{ customer.address }}</td>
@@ -30,3 +38,5 @@
 
 </div>
 {% endblock %}
+
+

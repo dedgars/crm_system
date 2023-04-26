@@ -26,8 +26,8 @@ class CustomerForm(forms.ModelForm):
 class CustomerMultiForm(MultiModelForm):
     
     form_classes = {
-        'address': AddressForm,
         'customer': CustomerForm,
+        'address': AddressForm,
     }
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
