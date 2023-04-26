@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+<h2>Customers</h2>
+<div class="d-flex justify-content-between">
+
+
+    <section>
+        {% include 'customers/search.html' %}
+    </section>
+    </div>
+    
+    {% if request.method == 'POST' %}
+    
+    <input type="text"
+        hx-swap-oob="true"
+        id="customer-input"
+        name="customer" 
+        class="form-control-sm mr-2" 
+        placeholder="Enter customer details" />
+    
+    {% endif %}
+
+</div>
+{% endblock %}

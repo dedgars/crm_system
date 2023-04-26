@@ -10,9 +10,12 @@
     {% bootstrap_css %} 
     {%  bootstrap_javascript %} 
     {% bootstrap_messages %}
+    <script src="https://unpkg.com/htmx.org@1.8.0"></script>
   </head>
 
-  <body>
+
+    <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
     <div class="container">
 
       <hr />
@@ -32,6 +35,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'customers:add_customer' %}">Add Customer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'customers:search_customers' %}">Search</a>
             </li>
            
             <li class="nav-item">

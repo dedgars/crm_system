@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, View
 from .models import Customer, Address
 from .forms import CustomerMultiForm, AddressForm, CustomerForm
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 class CustomerView(ListView):
@@ -50,4 +52,18 @@ class DeleteCustomerView(DeleteView):
     context_object_name = 'customer'
 
 
+@login_required
+def search_customers(request):
 
+    return render(request, 'customers/search_customers.html')
+
+
+@login_required
+def search(request):
+    search_term = request.POST.get('search', None)
+    if search_term:
+        results = Customer.objects.filter(first_name__icontains=search_term)
+        context = {'results': results}
+    else:
+        context = {}
+    return render(request, 'customers/search_results.html', context)

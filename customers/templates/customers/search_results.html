@@ -1,0 +1,28 @@
+
+
+
+
+{% if results %}
+    {% csrf_token %}
+    <ul class="list-group col-xs-12">
+    {% for customer in results %}
+        <li>
+            {{ customer }}
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No search results</p>
+{% endif %}
+
+
+
+{% comment %} 
+<span class="badge badge-success badge-pill" 
+style="cursor: pointer;"
+hx-post="{% url 'add-film' %}"
+hx-vals='{"filmname": "{{film.name}}"}'
+hx-target="#film-list">add</span> 
+{% endcomment %}
+
+
