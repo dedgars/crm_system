@@ -14,7 +14,7 @@ class Customer(models.Model):
     organization_vat_number = models.CharField(max_length=100, blank=True)
 
     email = models.CharField(max_length=100, blank=True)
-    phone = models.CharField(max_length=100, blank=True)
+    phone = models.CharField(max_length=100, blank=False, unique=True)
     
     address = models.ForeignKey("Address", related_name='customer_addresses', on_delete=models.PROTECT)
     
