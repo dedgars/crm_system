@@ -7,7 +7,7 @@
     <ul>
     {% for customer in results %}
         <li>
-            {{ customer }}
+            <a href="{% url 'customers:customer_detail'  customer.customer_id %}">{{ customer }}</a>
         </li>
     {% endfor %}
     </ul>

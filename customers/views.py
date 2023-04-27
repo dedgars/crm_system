@@ -54,7 +54,6 @@ class DeleteCustomerView(DeleteView):
 
 @login_required
 def search_customers(request):
-
     return render(request, 'customers/search_customers.html')
 
 
@@ -62,7 +61,14 @@ def search_customers(request):
 def search(request):
     search_term = request.POST.get('search', None)
     if search_term:
-        results = Customer.objects.filter(first_name__icontains=search_term)
+        results = Customer.objects.filter(
+            Q(first_name__icontains=search_term) | 
+            Q(last_name__icontains=search_term) | 
+            Q(address__street_name__icontains=search_term) | 
+            Q(email__icontains=search_term) | 
+            Q(organization_name__icontains=search_term)
+            )
+              
         context = {'results': results}
     else:
         context = {}

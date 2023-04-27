@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customers.apps.CustomersConfig',
     'bootstrap5',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

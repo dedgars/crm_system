@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 
-{% load bootstrap5 %} 
+{% load bootstrap5 %}
 {% bootstrap_css %}
+{% load widget_tweaks %}
 
 {% block content %}
-<div class="container">
 
-
-<body class="main-bg">
   <div class="container">
     <div class="row justify-content-center mt-5">
       <div class="col-lg-4 col-md-6 col-sm-6">
@@ -17,21 +15,32 @@
             <h2 class="p-3">Login</h2>
           </div>
           <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-            <div class="mb-4">
-               {{ form }}
-            </div>
-            <div class="d-grid">
+            <form method="POST">
+
+              {% csrf_token %}
+
+              <div class="mb-4">
+                <label for="username" class="form-label">Username</label>
+                {% render_field form.username class="form-control" %}
+              </div>
+
+              <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                {% render_field form.password class="form-control" %}
+              </div>
+
+              <div class="d-grid">
                 <button type="submit" class="btn btn-primary">Log In</button>
-            </div>
+              </div>
+              
             </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
 
-</html>
-{% endblock %}
+
+
+  {% endblock %}
+
