@@ -1,16 +1,55 @@
 
 {% extends "base.html" %}
 {% block content %}
+{% load widget_tweaks %}
 
-<h2>Edit Address</h2>
-<hr />
+
+
+<div class="container">
+    <div class="row justify-content-left mt-5">
+      <div class="col-lg-4 col-md-6 col-sm-6">
+          <div class="card-title text-center border-bottom">
+            <h2 class="p-3">Edit Address</h2>
+          </div>
+          <div class="card-body">
+
 <form method="POST">
 
     {% csrf_token %}
+    {{ form.errors }}
+    {{ form.non_field_errors }}
 
-    {{ form.as_p }}
+    <div class="mb-4">
+    {{ form.street_name.label }}
+    {% render_field form.street_name class="form-control" %}
+
+    
+    {{ form.street_number.label }}
+    {% render_field form.street_number class="form-control" %}
+
+    {{ form.city.label }}
+    {% render_field form.city class="form-control" %}
+
+    {{ form.county.label }}
+    {% render_field form.county class="form-control" %}
+
+    {{ form.neighborhood.label }}
+    {% render_field form.neighborhood  class="form-control" %}
+
+    {{ form.postal_code.label }}
+    {% render_field form.postal_code class="form-control" %}
+    </div>
 
 
 <input type="submit" value="Update Address" class="btn btn-primary" /> 
 </form>
+            
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 {% endblock %}
+

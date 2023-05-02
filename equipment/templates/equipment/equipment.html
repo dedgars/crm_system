@@ -2,9 +2,28 @@
 
 {% block content %}
 
-{% for item in object_list %}
 
-{{ item }}
+<div class="container">
+    <table class="table table-sm">
+     
+            <tr>
+                <th>Equipment</th>
+                <th>Owner</th>
+                <th>Address</th>
+            </tr>
+  
+            {% for item in object_list %}
+            <tr>
+                <td>{{ item.brand }} {{ item.model }} </td>
+                <td>{{ item.customer.first_name }} {{ item.customer.last_name }}</td>
+                <td>{{ item.address }}</td>
+            </tr>
+            {% endfor %}
 
-{% endfor %}
+
+    </table>
+</div>
+
+
+
 {% endblock  %}

@@ -32,11 +32,13 @@
 
 <hr/>
 
-<p><a href="">Add Equipment</a></p>
+<p><a href="{% url 'equipment:add_equipment' customer.customer_id %}">Add Equipment</a></p>
+
 <p><a href="{% url 'customers:edit_customer' customer.customer_id %}">Edit Customer Details</a></p>
 <p><a href="{% url 'customers:edit_address' customer.address_id %}">Edit Address</a></p>
 <p><a href="{% url 'customers:delete_customer' customer.customer_id %}">Delete</a></p>
 
-
+<hr />
+{% include 'equipment/equipment_list.html' %}
 
 {% endblock %}

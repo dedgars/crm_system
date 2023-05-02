@@ -1,7 +1,9 @@
+from typing import Any, Dict
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView, View
 from .models import Customer, Address
+from equipment.models import Equipment
 from .forms import CustomerMultiForm, AddressForm, CustomerForm
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
@@ -18,6 +20,10 @@ class CustomerDetailView(DetailView):
     model = Customer
     template_name = 'customers/customer_detail.html'
     context_object_name = 'customer'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['equipment'] = Equipment.objects.filter(customer=self.object)
+        return context
 
 class AddCustomerView(CreateView):
     form_class = CustomerMultiForm

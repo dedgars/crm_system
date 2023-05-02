@@ -24,6 +24,7 @@ class Equipment(models.Model):
     description = models.CharField(max_length=100, blank=True)
     customer = models.ForeignKey("customers.Customer", related_name='customer_equipment', on_delete=models.PROTECT)
     address = models.ForeignKey("customers.Address", related_name='address_equipment', on_delete=models.PROTECT)
+    installation_date = models.DateField()
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
