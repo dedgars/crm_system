@@ -1,8 +1,13 @@
 asgiref==3.6.0
 beautifulsoup4==4.12.2
+crispy-bootstrap5==0.7
 Django==4.2
 django-betterforms==2.0.0
 django-bootstrap-v5==1.0.11
+django-crispy-forms==2.0
+django-extensions==3.2.1
 django-multiform-views==0.1.0a7
+django-widget-tweaks==1.4.12
+extensions==0.4
 soupsieve==2.4.1
 sqlparse==0.4.4
