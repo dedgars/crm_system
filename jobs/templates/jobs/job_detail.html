@@ -1,0 +1,44 @@
+
+
+
+
+{% extends "base.html" %}
+{% block content %}
+
+<h2>
+    {{ job.type}} @ {{ job.equipment.address }}  {{ job.equipment.brand }} {{ job.equipment.model }}  
+</h2>
+
+<table>
+    <tr><td>Job ID:</td><td>{{ job.job_id }}</td></tr>
+    <tr><td>Job type:</td><td>{{ job.type }}</td></tr>
+    <tr><td>Date:</td><td>{{ job.date }}</td></tr>
+    <tr><td>Description: </td><td>{{ job.description }}</td></tr>
+    <tr><td>Appliance type: </td><td>{{ job.equipment.type }}</td></tr>
+    <tr><td>Appliance brand: </td><td>{{ job.equipment.brand }}</td></tr>
+    <tr><td>Appliance model: </td><td>{{ job.equipment.model }}</td></tr>
+    <tr><td>Serial_number: </td><td>{{ job.equipment.serial_number }}</td></tr>
+    <tr><td>Apliance address: </td><td>{{ job.equipment.address }}</td></tr>
+    <tr><td>Customer address: </td><td>{{ job.customer.address }}</td></tr>
+    <tr><td>Thermostat: </td>
+        <td>{% if job.appliance.thermostat == '0' %} No {% else %} Yes {% endif %}</td>
+    </tr>
+</table>
+
+
+<hr />
+<ul class="list-unstyled">
+    <li class="small"><small>Created: {{ job.date_created }}</small></li>
+    <li class="small"><small>Modified: {{ job.date_modified }}</small></li>
+</ul>
+
+
+
+<hr/>
+<ul class="list-unstyled">
+    <li class="links-in-detail"><a href="">Edit Equipment Details</a></li>
+</ul>
+<hr />
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<h2>Add Job</h2>
+
+<form method="POST">
+
+
+    {% csrf_token %}
+    <ul class="list-unstyled">
+
+        <li class="form-label">{{ form.type.label }}</li>
+        <li class="form">{{ form.type }}</li>
+        <li class="form-label">{{ form.equipment.label }}</li>
+        <li class="form">{{ form.equipment }}</li>
+        <li class="form-label">{{ form.date.label }}</li>
+        <li class="form">{{ form.date }}</li>
+        <li class="form-label">{{ form.payment_method.label }}</li>
+        <li class="form">{{ form.payment_method }}</li>
+        <li class="form-label">{{ form.description.label }}</li>
+        <li class="form">{{ form.description }}</li>
+
+    </ul>
+    
+        <input type="submit" value="Add Job" class="btn btn-primary" /> 
+</form>
+
+<div>
+</div>
+
+{% endblock %}

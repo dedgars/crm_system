@@ -1,0 +1,48 @@
+<div class="container">
+    <div>
+    <table class="table table-sm">
+        <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Address</th>
+            <th>Equipment</th>
+            <th>Customer</th>
+            <th>Technician</th>
+            <th></th>
+        <tr>
+        {% for job in jobs %}
+            <a href="">
+                <tr>
+                    <td>{{ job.job_id }} </td>
+                    <td>{{ job.date }} </td>
+                    
+                    <td>{{ job.type }} </td>
+                    <td>{{ job.equipment.address }}</td>
+                    <td>{{ job.equipment.brand }} {{ job.equipment.model }}</td>
+                    <td>{{ job.customer.first_name }} {{ job.customer.last_name }}</td>
+                    <td>Toshiko</td>
+                    <td><a href="{% url 'jobs:view_job' job.job_id %}">View</td>
+                </tr>
+            </a>
+        {% endfor %}
+        </table>
+    </div>
+    <hr/>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
